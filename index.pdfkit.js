@@ -13,14 +13,18 @@ app.post("/", async (req, res) => {
 
   const html = await rp(data);
 
-  pdf.create(html).toStream((err, stream) => {
-    if (err) return res.sendStatus(500);
+  pdf
+    .create(html, {
+      directory: "/tmp",
+    })
+    .toStream((err, stream) => {
+      if (err) return res.sendStatus(500);
 
-    res.setHeader("Content-Type", "application/pdf");
-    res.setHeader("Content-Disposition", 'attachment; filename="file.pdf"');
+      res.setHeader("Content-Type", "application/pdf");
+      res.setHeader("Content-Disposition", 'attachment; filename="file.pdf"');
 
-    stream.pipe(res);
-  });
+      stream.pipe(res);
+    });
 });
 
 const PORT = process.env.PORT || 3005;
