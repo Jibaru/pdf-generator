@@ -10,7 +10,14 @@ app.post("/", async (req, res) => {
 
   console.info(`POST /: ${data}`);
 
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({
+    args: [
+      "--disable-dev-shm-usage",
+      "--no-sandbox",
+      "--headless",
+      "--disable-gpu",
+    ],
+  });
   const page = await browser.newPage();
 
   await page.goto(data, { waitUntil: "networkidle2" });
