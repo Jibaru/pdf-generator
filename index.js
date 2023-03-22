@@ -1,6 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const puppeteer = require("puppeteer");
+const chromium = require("chrome-aws-lambda");
 
 const app = express();
 app.use(bodyParser.json());
@@ -10,7 +10,7 @@ app.post("/", async (req, res) => {
 
   console.info(`POST /: ${data}`);
 
-  const browser = await puppeteer.launch({
+  const browser = await chromium.puppeteer.launch({
     args: [
       "--disable-dev-shm-usage",
       "--no-sandbox",
