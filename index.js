@@ -11,12 +11,11 @@ app.post("/", async (req, res) => {
   console.info(`POST /: ${data}`);
 
   const browser = await chromium.puppeteer.launch({
-    args: [
-      "--disable-dev-shm-usage",
-      "--no-sandbox",
-      "--headless",
-      "--disable-gpu",
-    ],
+    args: [...chromium.args, "--hide-scrollbars", "--disable-web-security"],
+    defaultViewport: chromium.defaultViewport,
+    executablePath: await chromium.executablePath,
+    headless: true,
+    ignoreHTTPSErrors: true,
   });
   const page = await browser.newPage();
 
