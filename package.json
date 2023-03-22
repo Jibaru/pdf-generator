@@ -2,9 +2,9 @@
   "name": "pdf-generator",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.pdfkit.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node index.pdfkit.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -13,6 +13,9 @@
     "body-parser": "^1.20.2",
     "chrome-aws-lambda": "6.0.0",
     "express": "^4.18.2",
-    "puppeteer": "^19.7.5"
+    "html-pdf": "^3.0.1",
+    "pdfkit": "^0.13.0",
+    "puppeteer": "^19.7.5",
+    "request-promise": "^4.2.6"
   }
 }
