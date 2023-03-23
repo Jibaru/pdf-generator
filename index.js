@@ -13,7 +13,7 @@ app.post("/", async (req, res) => {
   const browser = await chromium.puppeteer.launch({
     args: [...chromium.args, "--hide-scrollbars", "--disable-web-security"],
     defaultViewport: chromium.defaultViewport,
-    executablePath: await chromium.executablePath,
+    executablePath: "/usr/bin/google-chrome",
     headless: true,
     ignoreHTTPSErrors: true,
   });
