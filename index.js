@@ -6,7 +6,7 @@ const app = express();
 app.use(bodyParser.json());
 
 app.post("/", async (req, res) => {
-  const { data } = req.body.json;
+  let { data } = req.body;
 
   console.info(`POST /: ${data}`);
 
