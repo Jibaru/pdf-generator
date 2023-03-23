@@ -9,7 +9,10 @@ services:
       - "${PORT:-3005}:3005"
     networks:
       - pdf-generator-network
+      - idbi_backend
 
 networks:
   pdf-generator-network:
     driver: bridge
+  idbi_backend:
+    external: true
