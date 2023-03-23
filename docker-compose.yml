@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  pdf-generator:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "${PORT:-3005}:3005"
+    networks:
+      - pdf-generator-network
+
+networks:
+  pdf-generator-network:
+    driver: bridge
